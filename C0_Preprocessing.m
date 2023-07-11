@@ -2,31 +2,31 @@ clc;
 clear all;
 close all;
 ica_applied=1; %apply ICA (1) or not (0)
-for partid=[1:16] 
+addpath(genpath('F:\Toolbox\eeglab2021.1'))
+for subj=[1:16] 
     
-    addpath(genpath('F:\Toolbox\eeglab2021.1'))
     eeglab
     pop_editoptions('option_savetwofiles', 0);
     
     % load EEG file
-    EEG_raw = pop_loadbv(sprintf('F:/RESEARCH/Hamid/Features_EEG/sub-%02i/eeg/',partid), sprintf('sub-%02i_task-rsvp_eeg.vhdr',partid));
-    EEG_raw = eeg_checkset(EEG_raw);
-    EEG_raw.setname = partid;
-    EEG_raw = eeg_checkset(EEG_raw);
+    EEG_current = pop_loadbv(sprintf('F:/RESEARCH/Hamid/Features_EEG/sub-%02i/eeg/',subj), sprintf('sub-%02i_task-rsvp_eeg.vhdr',subj));
+    EEG_current = eeg_checkset(EEG_current);
+    EEG_current.setname = subj;
+    EEG_current = eeg_checkset(EEG_current);
     
     % notch filter
-    EEG_raw = pop_eegfiltnew(EEG_raw, 49,51,[],1);
-    EEG_raw = pop_eegfiltnew(EEG_raw, 99,101,[],1);
-    EEG_raw = pop_eegfiltnew(EEG_raw, 149,151,[],1);
+    EEG_current = pop_eegfiltnew(EEG_current, 49,51,[],1);
+    EEG_current = pop_eegfiltnew(EEG_current, 99,101,[],1);
+    EEG_current = pop_eegfiltnew(EEG_current, 149,151,[],1);
     
     % high pass filter
-    EEG_raw = pop_eegfiltnew(EEG_raw, 0.05,[]);
+    EEG_current = pop_eegfiltnew(EEG_current, 0.05,[]);
     
     % low pass filter
-    EEG_raw = pop_eegfiltnew(EEG_raw, [],200);
+    EEG_current = pop_eegfiltnew(EEG_current, [],200);
     
     % downsample
-    EEG_cont = pop_resample(EEG_raw, 500);
+    EEG_cont = pop_resample(EEG_current, 500);
     EEG_cont = eeg_checkset(EEG_cont);
     
     if ica_applied==1
@@ -47,7 +47,7 @@ for partid=[1:16]
             legend(artefact_labels(2:6),'location','northwest')
         end
 %         [~,max_eye_artf]=max(EEG.etc.ic_classification.ICLabel.classifications(:, 3));
-        %% increase partid
+        %% increase subj
         stop_toc_check_components
         pop_viewprops(EEG, 0); % to see component properties
         % 1: 2,3 8
@@ -67,7 +67,7 @@ for partid=[1:16]
         % 15: 12 13 18
         % 16: 1 2 4
         EEG_cont = pop_subcomp( EEG, [1 2 4]);
-        clearvars OUT_EEG EEG EEG_raw EEG
+        clearvars OUT_EEG EEG EEG_current EEG
         EEG_cont.icawinv=[];
         EEG_cont.icasphere=[];
         EEG_cont.icaweights=[];
@@ -81,10 +81,10 @@ for partid=[1:16]
     EEG_epoch.event=[];
     EEG_epoch.urevent=[];
     if ica_applied==1
-        save(sprintf('F:/RESEARCH/Hamid/Features_EEG/derivatives/hamid_preproc/sub-%02i_task-rsvp_500HZ_Notched_ICAed.mat',partid),'EEG_epoch','-v7.3')
+        save(sprintf('F:/RESEARCH/Hamid/Features_EEG/derivatives/hamid_preproc/sub-%02i_task-rsvp_500HZ_Notched_ICAed.mat',subj),'EEG_epoch','-v7.3')
     else
-        save(sprintf('F:/RESEARCH/Hamid/Features_EEG/derivatives/hamid_preproc/sub-%02i_task-rsvp_500HZ_Notched.mat',partid),'EEG_epoch','-v7.3')
+        save(sprintf('F:/RESEARCH/Hamid/Features_EEG/derivatives/hamid_preproc/sub-%02i_task-rsvp_500HZ_Notched.mat',subj),'EEG_epoch','-v7.3')
     end
-    clearvars -except partid ica_applied
-    [partid]
+    clearvars -except subj ica_applied
+    [subj]
 end
