@@ -6,13 +6,10 @@ addpath(genpath('F:\Toolbox\eeglab2021.1'))
 for subj=[1:16] 
     
     eeglab
-    pop_editoptions('option_savetwofiles', 0);
     
     % load EEG file
     EEG_current = pop_loadbv(sprintf('F:/RESEARCH/Hamid/Features_EEG/sub-%02i/eeg/',subj), sprintf('sub-%02i_task-rsvp_eeg.vhdr',subj));
-    EEG_current = eeg_checkset(EEG_current);
     EEG_current.setname = subj;
-    EEG_current = eeg_checkset(EEG_current);
     
     % notch filter
     EEG_current = pop_eegfiltnew(EEG_current, 49,51,[],1);
@@ -27,7 +24,6 @@ for subj=[1:16]
     
     % downsample
     EEG_cont = pop_resample(EEG_current, 500);
-    EEG_cont = eeg_checkset(EEG_cont);
     
     if ica_applied==1
         OUT_EEG = pop_runica(EEG_cont);
@@ -74,7 +70,7 @@ for subj=[1:16]
         EEG_cont.icachansind=[];
     end    
     % pop_saveset(EEG_cont,contfn);
-    %% create epochs
+    %% Epoching
     EEG_epoch = pop_epoch(EEG_cont, {'E  1'}, [-0.600 0.600]);
     
     EEG_epoch.epoch=[];
