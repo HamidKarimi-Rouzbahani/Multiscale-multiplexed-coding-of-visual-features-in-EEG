@@ -31,6 +31,7 @@ I provide below a short discription of each of the custom scripts used in the cu
     % C1_Time_resolved_decoding_multiscale_per_area
     % and C2_Autocorr_calculation
 
+
 **C1_Time_resolved_decoding_multiscale.m**
 % This script performs the multiscale decoding using the
 % preprocessed data
@@ -80,6 +81,32 @@ I provide below a short discription of each of the custom scripts used in the cu
     % C3_Autocorr_tau_estimation
 
 
+**C3_Autocorr_tau_estimation.py**    
+% This script estimates for every trial the parameters of an exponential decay 
+% function fitted to the autocorrelation function obtained from each trial
+    % It first loads loads the data
+    % Then fits the exponential decay function to it and estimates the parameters
+    % Then it evaluates the goodness of fit
+    % finally it saves the data in Matlab .mat format to be used for plotting
+
+% INPUTS: autocorrelation time series data from C2_Calculating_autocors_and_prepararing_for_ACF_estim.m
+% OUTPUTS: the parameters of exponential decay function fitted to ACF and the goodness of fit used by:
+    % P3_Plotting_autocorr_parameters.m
+    
+    
+**C3_Autocorr_tau_estimation_sim.py**
+% This script estimates for every trial the parameters of an exponential decay 
+% function fitted to the autocorrelation function obtained from each simulated trial
+    % It first loads loads the simulated data
+    % Then fits the exponential decay function to it and estimates the parameters
+    % Then it evaluates the goodness of fit
+    % finally it saves the data in Matlab .mat format to be used for plotting
+
+% INPUTS: autocorrelation time series data from C5_Evaluating_decoding_vs_ACF_estimations.m
+% OUTPUTS: the parameters of exponential decay function fitted to ACF and the goodness of fit used by:
+    % CP2_Evaluating_decoding_vs_ACF_estimations.m
+
+   
 **CP1_Decoding_window_time_constant_simulations.m**
 % This script performs two simulations:
     % 1: simulation of a time series with indication of different length of
@@ -124,6 +151,7 @@ I provide below a short discription of each of the custom scripts used in the cu
 % INPUTS: C1_Time_resolved_decoding_multiscale_per_area
 % OUTPUTS: NA (images)
 
+
 **P1_Ploting_time_resolved_decoding_supplem.m**
 % This script plots the multiscale time-resolved decoding results (also does the Bayesian Analyses)
 % for all 10 time scales: Supplementary Figure 1
@@ -154,29 +182,4 @@ I provide below a short discription of each of the custom scripts used in the cu
 
 % INPUTS: C3_Autocorr_tau_estimation
 % OUTPUTS: NA (images)
-  
 
-**C3_Autocorr_tau_estimation.py**    
-% This script estimates for every trial the parameters of an exponential decay 
-% function fitted to the autocorrelation function obtained from each trial
-    % It first loads loads the data
-    % Then fits the exponential decay function to it and estimates the parameters
-    % Then it evaluates the goodness of fit
-    % finally it saves the data in Matlab .mat format to be used for plotting
-
-% INPUTS: autocorrelation time series data from C2_Calculating_autocors_and_prepararing_for_ACF_estim.m
-% OUTPUTS: the parameters of exponential decay function fitted to ACF and the goodness of fit used by:
-    % P3_Plotting_autocorr_parameters.m
-    
-
-**C6_Autocorr_tau_estimation_sim.py**
-% This script estimates for every trial the parameters of an exponential decay 
-% function fitted to the autocorrelation function obtained from each simulated trial
-    % It first loads loads the simulated data
-    % Then fits the exponential decay function to it and estimates the parameters
-    % Then it evaluates the goodness of fit
-    % finally it saves the data in Matlab .mat format to be used for plotting
-
-% INPUTS: autocorrelation time series data from C5_Evaluating_decoding_vs_ACF_estimations.m
-% OUTPUTS: the parameters of exponential decay function fitted to ACF and the goodness of fit used by:
-    % CP2_Evaluating_decoding_vs_ACF_estimations.m
