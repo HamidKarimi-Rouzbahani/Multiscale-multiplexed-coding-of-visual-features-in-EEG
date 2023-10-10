@@ -16,15 +16,15 @@ There are also two scripts which are coded in Python which are used for curve fi
 I provide below a short discription of each of the custom scripts used in the current manuscript - the scripts with C as their initial letter in file name. More details can be found within each script.
 
 
-% This script preprocesses the raw EEG data provided at https://openneuro.org/datasets/ds004357/versions/1.0.0
-    % It first loads the data from the original dataset
-    % Then it notch filters the data at 50, 100 and 150Hz followed by high (0.05) and low-pass (200 Hz) filterng and
-    % down-sampling (to 500 Hz)
-    % Then it applies ICA to find and remove components which are related to
-    % eye-movement artefacts
-    % Finally it epochs (-600 to 600 ms relative to stimulus onset) and saves the data
+#% This script preprocesses the raw EEG data provided at https://openneuro.org/datasets/ds004357/versions/1.0.0
+#   % It first loads the data from the original dataset
+#    % Then it notch filters the data at 50, 100 and 150Hz followed by high (0.05) and low-pass (200 Hz) filterng and
+#    % down-sampling (to 500 Hz)
+#    % Then it applies ICA to find and remove components which are related to
+#    % eye-movement artefacts
+#    % Finally it epochs (-600 to 600 ms relative to stimulus onset) and saves the data
 
-% INPUTS: data from the original dataset
+# % INPUTS: data from the original dataset
 % OUTPUTS: epoched data to be used by:
     % C1_Time_resolved_decoding_multiscale
     % C1_Time_resolved_decoding_multiscale_per_area
