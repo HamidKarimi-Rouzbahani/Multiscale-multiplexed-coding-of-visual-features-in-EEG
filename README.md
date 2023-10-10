@@ -3,7 +3,7 @@ Multiscale multiplexed coding of visual features in EEG
 
 This repository shares the programming scripts used for the following manuscript:
 
-Karimi-Rouzbahani, H., & McGonigal, A. (2023). Generalisability of epileptiform patterns across time and patients. medRxiv, 2023-08. doi: https://doi.org/10.1101/2023.07.09.548296
+Karimi-Rouzbahani, H. (2023). Evidence for multiscale multiplexed representation of visual features in EEG. doi: https://doi.org/10.1101/2023.07.09.548296
 
 This is the readme file for the scripts used to conduct the analyses.
 
@@ -13,7 +13,7 @@ The analyses which are coded in Matlab (majority) which uses EEGLAB (eeglab2021.
 
 There are also two scripts which are coded in Python which are used for curve fitting which was missing from the Matlab installation that the author was using at the time of running the analyses.
 
-I provide below a short discription of each of the custom scripts used in the current manuscript - the scripts with C as their initial letter in file name. More details can be found within each script.
+I provide below a short discription of each of the scripts used in the current manuscript. More details can be found within each script.
 
 
 **C0_Preprocessing.m**
