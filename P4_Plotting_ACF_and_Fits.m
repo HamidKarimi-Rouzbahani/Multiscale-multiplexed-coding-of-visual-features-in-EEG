@@ -101,12 +101,11 @@ for partid=[1 4 6]
     figure;
     load(sprintf(['AutoCorr_Parameters_Subj_%02i.mat'],partid))
     c=0;
-    for cond=1:4
+    for cond=1 % only plotting for Orientation as the other features are 
+        % also very similar (they all used identical trials)
         c=c+1;
-        subplot(2,2,c)
         histogram(squeeze(nanmean(rSquared_all(cond,:,:),2)),100)
         hold on;
-        title([titles{cond}])
         xlabel('Goodness of fit (R^2)')
         ylabel('Number of channels')
         box off
