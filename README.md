@@ -13,7 +13,7 @@ The analyses which are coded in Matlab (majority) which uses EEGLAB (eeglab2021.
 
 There are also two scripts which are coded in Python which are used for curve fitting which was missing from the Matlab installation that the author was using at the time of running the analyses.
 
-I provide below a short discription of each of the scripts used in the current manuscript. More details can be found within each script.
+I provide below a short description of each of the scripts used in the current manuscript. More details can be found within each script.
 
 
 **C0_Preprocessing.m**
