@@ -7,7 +7,7 @@ Karimi-Rouzbahani, H. (2023). Evidence for multiscale multiplexed representation
 
 This is the readme file for the scripts used to conduct the analyses.
 
-The analyis scripts are the ones whose file names start with Cx, x referring the order of use from preprocessing the data to plotting the final figures. The Px files plot the figures and the CPx files are contain simulated analyses and plotting of the results.
+The analyis scripts are the ones whose file names start with Cx, x referring the order of use from preprocessing the data to plotting the final figures. The Px files plot the figures and the CPx files are for simulated analyses and plotting of the results.
 
 The analyses which are coded in Matlab (majority) which uses EEGLAB (eeglab2021.1) which can be downloaded freely at (https://sccn.ucsd.edu/eeglab/index.php) and the Bayes Factor toolbox developed by Bart Krekelberg (https://klabhub.github.io/bayesFactor/)
 
